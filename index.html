@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Perfect Day ✨</title>
+
+  <!-- google fonts - dancing script for headings, poppins for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-wrap">
+      <div class="logo">✨ Perfect Day</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#notes">My Notes</a></li>
+        <li><a href="#mood">Mood</a></li>
+        <li><a href="#quote">Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="hero">
+    <!-- floating blobs, purely decorative -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="hero-inner">
+      <h1 class="hero-title">THE PERFECT DAY</h1>
+      <p class="hero-sub">Plan it. Live it. Remember it.</p>
+      <a href="#timeline" class="cta-btn">Start Your Day</a>
+    </div>
+
+    <!-- little scroll hint -->
+    <div class="scroll-hint">↓ scroll for more</div>
+  </header>
+
+  <!-- ============ TIMELINE ============ -->
+  <section class="timeline" id="timeline">
+    <h2 class="section-title fade-in">Your Day, Mapped Out</h2>
+    <p class="section-sub fade-in">a little structure makes room for magic</p>
+
+    <div class="timeline-cards">
+      <div class="tl-card card-morning fade-in">
+        <div class="tl-icon">🌤️</div>
+        <h3>Morning</h3>
+        <p>Stretch, sip something warm, write down 3 things you're grateful for. Let the day start soft.</p>
+      </div>
+
+      <div class="tl-card card-afternoon fade-in">
+        <div class="tl-icon">🍃</div>
+        <h3>Afternoon</h3>
+        <p>Do the thing that matters most. Take a walk. Eat something that actually nourishes you.</p>
+      </div>
+
+      <div class="tl-card card-evening fade-in">
+        <div class="tl-icon">🌙</div>
+        <h3>Evening</h3>
+        <p>Wind down, dim the lights, journal a little. Let today be enough.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STICKY NOTES ============ -->
+  <section class="notes-section" id="notes">
+    <h2 class="section-title fade-in">My Perfect Day Notes</h2>
+    <p class="section-sub fade-in">jot down whatever your perfect day looks like — drag the notes around, they don't bite</p>
+
+    <button id="addNoteBtn" class="add-note-btn fade-in">+ Add New Note</button>
+
+    <!-- this is the corkboard. background is done in css, no image needed -->
+    <div class="corkboard" id="corkboard">
+      <!-- notes get injected here by js -->
+      <p class="empty-hint" id="emptyHint">the board's empty... click "add new note" above ☝️</p>
+    </div>
+  </section>
+
+  <!-- ============ MOOD TRACKER ============ -->
+  <section class="mood-section" id="mood">
+    <h2 class="section-title fade-in">How's Today Feeling?</h2>
+    <p class="section-sub fade-in">tap the one that fits</p>
+
+    <div class="mood-picker fade-in">
+      <button class="mood-btn" data-mood="amazing" aria-label="Amazing">🤩</button>
+      <button class="mood-btn" data-mood="happy" aria-label="Happy">😊</button>
+      <button class="mood-btn" data-mood="okay" aria-label="Okay">😌</button>
+      <button class="mood-btn" data-mood="tired" aria-label="Tired">😴</button>
+      <button class="mood-btn" data-mood="rough" aria-label="Rough">😔</button>
+    </div>
+  </section>
+
+  <!-- ============ DAILY QUOTE ============ -->
+  <section class="quote-section" id="quote">
+    <div class="quote-box fade-in">
+      <div class="quote-mark">“</div>
+      <p class="quote-text" id="quoteText">loading a little inspiration...</p>
+      <p class="quote-author" id="quoteAuthor"></p>
+      <button class="quote-btn" id="newQuoteBtn">New Quote</button>
+    </div>
+  </section>
+
+  <!-- toast for mood save -->
+  <div class="toast" id="toast">Mood saved for today! 💕</div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <p>Made with ♡ for better days</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+/* ==========================================================
+   THE PERFECT DAY — main stylesheet
+   pastel / dreamy / cozy vibes only please
+   ========================================================== */
+
+/* ---------- variables ---------- */
+:root {
+  --peach: #FFD6D6;
+  --lavender: #E6D6FF;
+  --baby-blue: #D6E6FF;
+  --mint: #D6FFE6;
+
+  /* a couple extra shades I mix in for depth */
+  --peach-deep: #ffc2c2;
+  --lavender-deep: #d4bdfc;
+  --text-dark: #4a4458;
+  --text-soft: #6b6478;
+
+  --radius: 16px;
+  --shadow-soft: 0 8px 30px rgba(160, 140, 200, 0.15);
+
+  --font-heading: 'Dancing Script', cursive;
+  --font-body: 'Poppins', sans-serif;
+}
+
+/* ---------- reset-ish ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: #fffaf9;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; }
+
+/* ---------- navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  /* glass effect - the whole reason this looks nice */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.nav-wrap {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a:hover { color: #b98fd6; }
+
+/* ---------- hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--peach) 0%, var(--lavender) 45%, var(--baby-blue) 75%, var(--mint) 100%);
+  background-size: 300% 300%;
+  animation: gradientDrift 16s ease infinite; /* slow ambient shift, nothing crazy */
+}
+
+@keyframes gradientDrift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 700;
+  color: #5c4b73;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+}
+
+.hero-sub {
+  margin-top: 14px;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-soft);
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 34px;
+  padding: 14px 38px;
+  background: #fff;
+  color: #6b4f9e;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px); /* the hover lift they asked for */
+  box-shadow: 0 14px 34px rgba(160, 140, 200, 0.3);
+}
+
+/* floaty background blobs - decorative only */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.blob-1 {
+  width: 260px; height: 260px;
+  background: #fff;
+  top: 8%; left: 10%;
+  animation: floaty 9s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 180px; height: 180px;
+  background: var(--mint);
+  bottom: 12%; right: 12%;
+  animation: floaty 11s ease-in-out infinite reverse;
+}
+
+.blob-3 {
+  width: 120px; height: 120px;
+  background: var(--peach-deep);
+  top: 55%; left: 4%;
+  animation: floaty 7s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 26px;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  z-index: 2;
+  animation: bounce 2.2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ---------- section shared bits ---------- */
+section { padding: 90px 20px; max-width: 1150px; margin: 0 auto; }
+
+.section-title {
+  text-align: center;
+  font-size: 2.6rem;
+  color: var(--text-dark);
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--text-soft);
+  margin-top: 6px;
+  margin-bottom: 50px;
+  font-size: 0.95rem;
+}
+
+/* ---------- timeline ---------- */
+.timeline-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.tl-card {
+  padding: 36px 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  /* glassmorphism-lite */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.6);
+  transition: transform 0.3s ease;
+}
+
+.tl-card:hover { transform: translateY(-6px); }
+
+.card-morning  { background: linear-gradient(160deg, var(--peach), #fff); }
+.card-afternoon{ background: linear-gradient(160deg, var(--mint), #fff); }
+.card-evening  { background: linear-gradient(160deg, var(--lavender), #fff); }
+
+.tl-icon { font-size: 2.4rem; margin-bottom: 12px; }
+
+.tl-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.tl-card p {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+/* ---------- sticky notes section ---------- */
+.notes-section {
+  background: #fdf7f5;
+  border-radius: 30px;
+  max-width: 1200px;
+}
+
+.add-note-btn {
+  display: block;
+  margin: 0 auto 40px;
+  padding: 12px 28px;
+  background: var(--lavender);
+  color: #5c4b73;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.add-note-btn:hover {
+  transform: translateY(-3px);
+  background: var(--lavender-deep);
+}
+
+/* the corkboard - faked with css gradients instead of an image, loads instantly */
+.corkboard {
+  position: relative;
+  min-height: 480px;
+  border-radius: 20px;
+  padding: 40px;
+  background-color: #d8b48a;
+  background-image:
+    radial-gradient(circle at 20px 20px, rgba(255,255,255,0.06) 2px, transparent 2px),
+    radial-gradient(circle at 60px 70px, rgba(0,0,0,0.06) 2px, transparent 2px),
+    radial-gradient(circle at 90px 30px, rgba(255,255,255,0.05) 2px, transparent 2px),
+    linear-gradient(135deg, #dcb890 0%, #c9a276 100%);
+  background-size: 90px 90px, 90px 90px, 90px 90px, cover;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.25), var(--shadow-soft);
+  overflow: hidden; /* keeps dragged notes from escaping too far, mostly */
+}
+
+.empty-hint {
+  color: #6b5537;
+  font-style: italic;
+  text-align: center;
+  padding-top: 180px;
+  font-size: 0.95rem;
+}
+
+/* individual sticky note */
+.sticky-note {
+  position: absolute;
+  width: 190px;
+  min-height: 190px;
+  padding: 16px 14px 30px;
+  border-radius: 4px 4px 60px 4px / 4px 4px 12px 4px; /* slightly torn paper corner, cheesy but cute */
+  box-shadow: 3px 6px 14px rgba(0,0,0,0.25);
+  cursor: grab;
+  animation: noteFadeIn 0.35s ease;
+  font-family: var(--font-body);
+  user-select: none;
+}
+
+.sticky-note:active { cursor: grabbing; }
+
+.sticky-note.dragging {
+  z-index: 500;
+  box-shadow: 6px 12px 24px rgba(0,0,0,0.35);
+  transition: none; /* no lag while dragging, learned this the hard way */
+}
+
+@keyframes noteFadeIn {
+  from { opacity: 0; transform: scale(0.8) rotate(0deg); }
+  to   { opacity: 1; }
+}
+
+/* the pastel variety - cycled through via nth-child in js */
+.note-peach    { background: var(--peach); }
+.note-lavender { background: var(--lavender); }
+.note-blue     { background: var(--baby-blue); }
+.note-mint     { background: var(--mint); }
+
+.note-delete {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  color: #7a6a6a;
+  font-size: 0.75rem;
+  line-height: 20px;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.note-delete:hover { background: rgba(255,255,255,0.95); }
+
+.note-text {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #4a4438;
+  outline: none;
+}
+
+.note-timestamp {
+  position: absolute;
+  bottom: 8px;
+  left: 14px;
+  font-size: 0.68rem;
+  color: rgba(0,0,0,0.45);
+}
+
+/* the little pin at the top of each note */
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff, #b33 60%, #700 100%);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+}
+
+/* ---------- mood tracker ---------- */
+.mood-section { text-align: center; }
+
+.mood-picker {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.mood-btn {
+  font-size: 2.3rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  width: 78px;
+  height: 78px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.mood-btn:hover { transform: scale(1.12) rotate(-4deg); }
+
+.mood-btn.selected {
+  background: var(--mint);
+  transform: scale(1.1);
+}
+
+/* ---------- quote ---------- */
+.quote-section { text-align: center; }
+
+.quote-box {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.quote-mark {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: var(--lavender-deep);
+  line-height: 0.5;
+}
+
+.quote-text {
+  font-size: 1.25rem;
+  margin: 14px 0 10px;
+  color: var(--text-dark);
+  font-style: italic;
+}
+
+.quote-author {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  margin-bottom: 26px;
+}
+
+.quote-btn {
+  padding: 10px 26px;
+  background: var(--baby-blue);
+  border-radius: 50px;
+  color: #3c5a80;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.quote-btn:hover {
+  transform: translateY(-3px);
+  background: #c2dbff;
+}
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--text-dark);
+  color: #fff;
+  padding: 14px 26px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  z-index: 1200;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 34px 20px;
+  background: linear-gradient(180deg, #fdf7f5, var(--peach));
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+/* ---------- scroll fade-in animation (toggled via js) ---------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .timeline-cards { grid-template-columns: 1fr; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.82rem; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; } /* TODO: build a real mobile menu someday */
+  .hero-title { letter-spacing: 1px; }
+  section { padding: 60px 16px; }
+  .corkboard { min-height: 620px; padding: 24px; }
+  .sticky-note { width: 150px; min-height: 150px; }
+  .mood-btn { width: 62px; height: 62px; font-size: 1.8rem; }
+}
